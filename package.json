@@ -1,0 +1,17 @@
+{
+  "name": "js-module-7-final-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "nodemon prompt.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.7.0",
+    "prompt": "^1.3.0"
+  },
+  "devDependencies": {},
+  "description": ""
+}
