@@ -42,10 +42,17 @@ const ingredientRecipes = recipeByIngredient(cakeRecipes, "butter");
 getRecipesName(ingredientRecipes);
 
 // Function 5: Get recipe by name
-let selectedRecipe = null;
+let savedIngredients = [];
 
 const getRecipeByName = (recipes, name) => {
-  selectedRecipe = recipes.find(recipe => recipe.Name.toLowerCase().includes(name.toLowerCase()));
+  const selectedRecipe = recipes.find(recipe => recipe.Name.toLowerCase().includes(name.toLowerCase()));
+  if (selectedRecipe) {
+    const save = prompt("Do you want to save this recipe? (Y/N): ").toLowerCase();
+    if (save === 'y') {
+      savedIngredients = selectedRecipe.Ingredients;
+      console.log("Recipe saved!");
+    }
+  }
   return selectedRecipe;
 };
 // console.log("Recipe matching 'Fruitcake':", getRecipeByName(cakeRecipes, "Fruitcake"));
@@ -98,8 +105,11 @@ do {
       console.log(getRecipeByName(cakeRecipes, name));
       break;
     case 5:
-      const recipeName = prompt("Enter the recipe name: ");
-      console.log(getIngredientsByName(cakeRecipes, recipeName));
+      if (savedIngredients.length > 0) {
+        console.log("Saved Ingredients:", savedIngredients.join(", "));
+      } else {
+        console.log("No ingredients saved.");
+      }
       break;
     case 0:
       console.log("Exiting...");
